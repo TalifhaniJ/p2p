@@ -18,4 +18,4 @@ def handle_message(message):
     socketio.emit('message', message)  # Broadcast
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, host='0.0.0.0', port=1000)
+    socketio.run(app,allow_unsafe_werkzeug=True,debug=True, host='0.0.0.0', port=1000)
