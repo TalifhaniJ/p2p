@@ -2,7 +2,7 @@ from flask import Flask
 from flask_socketio import SocketIO
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="eventlet")
 
 @socketio.on('connect')
 def connect():
@@ -18,4 +18,4 @@ def handle_message(message):
     socketio.emit('message', message)  # Broadcast
 
 if __name__ == '__main__':
-    socketio.run(app,allow_unsafe_werkzeug=True, debug=True, host='0.0.0.0', port=5000)
+    socketio.run(app, debug=True, host='0.0.0.0', port=1000)
